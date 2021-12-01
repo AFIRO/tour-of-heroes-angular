@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Hero} from "../hero";
-import {HEROES} from "./HEROES";
 import {HeroService} from "../service/hero.service";
-import {MessageService} from "../service/message.service";
 
 @Component({
   selector: 'app-heroes',
@@ -10,9 +8,9 @@ import {MessageService} from "../service/message.service";
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  heroes? : Hero[];
+  heroes : Hero[] = []
 
-  constructor(private heroService : HeroService, private messageService:MessageService) {
+  constructor(private heroService : HeroService) {
 
   }
 

@@ -10,17 +10,18 @@ import {HeroService} from "../service/hero.service";
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero?: Hero;
+ hero?: Hero;
 
   constructor(private activatedRoute : ActivatedRoute, private heroService: HeroService, private location : Location) {
   }
 
   ngOnInit(): void {
+    this.getHero()
   }
 
   getHero(): void {
     const id = Number(this.activatedRoute.snapshot.paramMap.get("id"))
-    this.heroService.getHero(id).subscribe(result => this.hero)
+    this.heroService.getHero(id).subscribe(result => this.hero = result)
 
   }
 
@@ -30,4 +31,7 @@ export class HeroDetailComponent implements OnInit {
 
   }
 
+  goBack() {
+    this.location.back();
+  }
 }
